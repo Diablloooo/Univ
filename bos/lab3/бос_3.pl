@@ -1,0 +1,227 @@
+ :-dynamic object/13.
+:-dynamic subject/2.
+
+%subject(user1, group1).
+%subject(user2, group1).
+%subject(admin,groupAdmins).
+%subject(genadmin,groupAdmins).
+
+subject(admin,admins).
+subject(s1,group1).
+subject(s2,group1).
+subject(s3,group2).
+subject(s4,group2).
+
+% object (type, name+path, owner, ro, wo, xo, rog, wog, xog,
+% roth, woth, xoth)
+%
+%object(dir,[root],admin,   1,1,1, 1,0,1, 1,0,1, 1).
+%object(dir,[rut],genadmin, 1,1,1, 1,0,1, 0,0,0, 1).
+%object(dir,[home,root],admin,   1,1,1, 1,0,0, 1,1,1, 1).
+%object(dir,[data,rut],genadmin, 1,1,1, 1,0,0, 0,0,0, 0).
+%object(file,[system,root],admin,1,1,1, 1,0,0, 0,0,0, 1).
+%object(file,[list,home,root],user1,  1,1,1, 1,1,1, 1,0,0, 0).
+
+object(dir,[root],admin,   1,1,1,1,1,1,1,1,1, 1).
+object(dir,[dir1,root],s1,   1,1,1,1,1,1,0,0,0, 1).
+object(dir,[dir2,dir1,root],s1,   1,1,1,1,1,1,1,0,1, 1).
+object(dir,[dir3,root],s2,   1,1,1,1,0,0,1,0,1, 1).
+object(dir,[dir4,dir3,root],s3,   1,1,1,1,0,0,1,0,1, 1).
+object(dir,[dir5,dir4,dir3,root],s3,   1,0,1,1,0,0,1,0,1, 1).
+object(dir,[dir6,dir3,root],s4,   1,0,1,1,0,0,1,0,1, 1).
+
+object(file,[file1,dir1,root],s1,   1,1,1,1,1,1,0,0,0, 1).
+object(file,[file2,dir2,dir1,root],s1,   1,1,1,1,1,1,1,0,1, 1).
+object(file,[file3,dir5,dir4,dir3,root],s4,   1,1,1,1,1,1,1,0,1, 1).
+object(file,[file4,dir6,dir3,root],s4,   1,1,1,0,0,1,1,0,0, 1).
+object(file,[file5,dir3,root],s2,   1,1,1,0,0,1,1,0,0, 1).
+
+% sub1 = кто обладает, sub2 = на что обладает
+can_read(Sub1,[A|B]) :-
+	subject(Sub1,S),
+	object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_),
+
+	((object(_,[A|B],Sub1,1,_,_,_,_,_,_,_,_,_),
+	 write(''));
+
+	(object(_,[A|B],X,_,_,_,1,_,_,_,_,_,_),
+	 subject(X,Y),
+	 X \== Sub1,
+	 S == Y,
+	write(''));
+
+	(object(_,[A|B],X,_,_,_,_,_,_,1,_,_,_),
+	 subject(X,Y),
+	 S \== Y,
+	write(''))),
+
+	can_execute(Sub1,B);
+	%write('read error'),nl,
+	false.
+
+can_execute(_,[]).
+can_execute(Sub1,[A|B]) :-
+	subject(Sub1,S),
+	object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_),
+
+	((object(_,[A|B],Sub1,_,_,1,_,_,_,_,_,_,_),
+	 write(''));
+
+	(object(_,[A|B],X,_,_,_,_,_,1,_,_,_,_),
+	 subject(X,Y),
+	 X \== Sub1,
+	 S == Y,
+	write(''));
+
+	(object(_,[A|B],X,_,_,_,_,_,_,_,_,1,_),
+	 subject(X,Y),
+	 S \== Y,
+	write(''))),
+
+	can_execute(Sub1,B);
+	%write('execute error'),nl,
+	false.
+
+can_write(Sub1,[A|B]) :-
+	subject(Sub1,S),
+	object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_),
+
+	((object(_,[A|B],Sub1,_,1,_,_,_,_,_,_,_,_),
+	 write(''));
+
+	(object(_,[A|B],X,_,_,_,_,1,_,_,_,_,_),
+	 subject(X,Y),
+	 X \== Sub1,
+	 S == Y,
+	write(''));
+
+	(object(_,[A|B],X,_,_,_,_,_,_,_,1,_,_),
+	 subject(X,Y),
+	 S \== Y,
+	write(''))),
+
+	can_execute(Sub1,B);
+	%write('write error'),nl,
+	false.
+
+
+check_dir([]):-
+	true.
+check_dir([A|B]):-
+	object(dir,[A|B],_,_,_,_,_,_,_,_,_,_,_),
+	check_dir(B);
+	write('Check dir error'),nl,
+	false.
+
+create_object(Sub1,[A|B],Type,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb) :-
+	check_dir(B),
+	subject(Sub1,_),
+	not(object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_)),
+	can_write(Sub1,B),
+	(Row=1;Row=0),
+	(Wow=1;Wow=0),
+	(Eow=1;Eow=0),
+	(Rog=1;Rog=0),
+	(Wog=1;Wog=0),
+	(Eog=1;Eog=0),
+	(Ro=1;Ro=0),
+	(Wo=1;Wo=0),
+	(Eo=1;Eo=0),
+	(Type=file;Type=dir),
+	assert(object(Type,[A|B],Sub1,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb));
+	false.
+
+change_rights(Sub1,Sub2,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb):-
+	subject(Sub1,_),
+	object(_,Sub2,Sub1,_,_,_,_,_,_,_,_,_,_),
+	object(Type,Sub2,_,_,_,_,_,_,_,_,_,_,_),
+	(Row=1;Row=0),
+	(Wow=1;Wow=0),
+	(Eow=1;Eow=0),
+	(Rog=1;Rog=0),
+	(Wog=1;Wog=0),
+	(Eog=1;Eog=0),
+	(Ro=1;Ro=0),
+	(Wo=1;Wo=0),
+	(Eo=1;Eo=0),
+	(Sb=1;Sb=0),
+	retract(object(Type,Sub2,_,_,_,_,_,_,_,_,_,_,_)),
+	assert(object(Type,Sub2,Sub1,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb));
+	false.
+
+delete_object(Sub1,[A|B]):-
+	subject(Sub1,_),
+	object(Type,[A|B],O,_,_,_,_,_,_,_,_,_,T),
+	can_write(Sub1,B),
+	((T==0, Type == file,
+	retract(object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_)));
+	(T==1, Type == file,
+	 O==Sub1,
+	 retract(object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_)));
+	(Type == dir,
+	delete(Sub1,[A|B])));
+	false.
+
+create(Sub2,[A|B],Type,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb) :-
+	not(object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_)),
+	object(dir,B,_,_,_,_,_,_,_,_,_,_,_),
+	(Row=1;Row=0),
+	(Wow=1;Wow=0),
+	(Eow=1;Eow=0),
+	(Rog=1;Rog=0),
+	(Wog=1;Wog=0),
+	(Eog=1;Eog=0),
+	(Ro=1;Ro=0),
+	(Wo=1;Wo=0),
+	(Eo=1;Eo=0),
+	(Type=file;Type=dir),
+	assert(object(Type,Sub2,admin,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb));
+	false.
+
+
+delete(S,[A|B]) :-
+	object(_,[A|B],O,_,_,_,_,_,_,_,_,_,T),
+	((T==0,
+	 can_write(S,B),
+	 retract(object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_)),
+	 forall(object(_,[C|[A|_]],_,_,_,_,_,_,_,_,_,_,_),delete(S,[C|[A|_]])));
+	(T==1,
+	 O==S,
+	 forall(object(_,[C|[A|_]],_,_,_,_,_,_,_,_,_,_,_),delete(S,[C|[A|_]]))),
+	 retract(object(_,[A|B],_,_,_,_,_,_,_,_,_,_,_)));
+	 false.
+
+printobj(Q,W,E,R,Y,U,I,O,P,A,S,D,L):-
+	object(Q,W,E,R,Y,U,I,O,P,A,S,D,L),
+	write(W), write('('), write(Q), write(')'),
+	write(',\t\t владелец: '),write(E),
+	write(',\t\t маска: '), write([R,Y,U]), write(' '), write([I,O,P]), write(' '), write([A,S,D]),write(' '),write([L]), write('\n').
+
+print_all:-
+	forall(object(Q,W,E,R,Y,U,I,O,P,A,S,D,L),printobj(Q,W,E,R,Y,U,I,O,P,A,S,D,L)).
+
+
+get_file_list_in_folder(S,[A|B]):-
+	can_read(S,[A|B]),
+	write('Files:'),nl,
+	forall(object(file,[C|[A|B]],_,_,_,_,_,_,_,_,_,_,_),(write([C|[A|B]]),nl));
+	false.
+
+
+%can_read(Sub1,[A|B])
+%can_execute(Sub1,[A|B])
+%can_write(Sub1,[A|B]) :-
+
+%check_dir([A|B]):-
+
+%% sub1 = кто создает, sub2 = что создает
+%create_object(Sub1,[A|B],Type,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb) :-
+%create(Sub2,[A|B],Type,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb) :-
+
+% sub1 = кто меняет, sub2 = что меняет
+%change_rights(Sub1,Sub2,Row,Wow,Eow,Rog,Wog,Eog,Ro,Wo,Eo,Sb):-
+
+%delete_object(Sub1,[A|B]):-
+%delete(S,[A|B]) :-
+
+%print_all:-
