@@ -1,0 +1,259 @@
+class lab4
+{
+    inputs = ();
+    outputs = ();
+    node_size = (80 40);
+    HR_InputPanel_State = "=showinfo:toggle:software;software=showinfo:!toggle;";
+    HR_DBN_Num_Slices = "5";
+    HR_Desc = "";
+    HR_OOBN_CheckConsistency = "1";
+    HR_OOBN_FitExpand = "1";
+    HR_Zoom_ZoomFactor = "100";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Utility_Link = "63";
+    HR_Probabilistic_Link = "63";
+    HR_Functional_Link = "63";
+    HR_Binding_Link = "63";
+    HR_Information_Arc = "63";
+    HR_Color_Interface = "21";
+    HR_Color_Instance = "0";
+    HR_Color_DiscreteFunction = "5";
+    HR_Color_Function = "4";
+    HR_Color_Utility = "36";
+    HR_Color_Decision = "17";
+    HR_Color_ContinuousChance = "48";
+    HR_Color_DiscreteChance = "16";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_Utility_Arrange = "0";
+    HR_Monitor_Mean_Variance = "1";
+    HR_Monitor_Chance_Utility = "1";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_MaxMinimalSeparators = "100000";
+    HR_Compile_ApproxEpsilon = "1.0E-5";
+    HR_Compile_Approximate = "0";
+    HR_Compile_SaveToMemory = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "1";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "javax.swing.plaf.FontUIResource[family=Dialog,name=Dialog,style=bold,size=12]";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "0";
+    HR_Grid_Y = "40";
+    HR_Grid_X = "40";
+
+    node not_formatted
+    {
+	label = "\320\235\320\265 \320\277\321\200\320\276\320\262\320\265\320\264\320\265\320\275\320\276 \n\321\204\320\276\321\200\320\274\320\260\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265 \320\264\320\270\321\201\320\272\320\265\321\202\321\213? ";
+	position = (613 217);
+	states = ("Yes" "No");
+	HR_LinkGroup = "[software:0]";
+	HR_LinkMode = "[software:0]";
+	HR_NodeSize = "(187, 62)";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node reading_device_error
+    {
+	label = "\320\241\321\207\320\270\321\202\321\213\320\262\320\260\321\216\321\211\320\265\320\265 \n\320\276\320\261\320\276\321\200\321\203\320\264\320\276\320\262\320\260\320\275\320\270\320\265 \320\275\320\265\320\270\321\201\320\277\321\200\320\260\320\262\320\275\320\276? ";
+	position = (393 196);
+	states = ("Yes" "No");
+	HR_LinkGroup = "[hardware:0]";
+	HR_LinkMode = "[hardware:0]";
+	HR_NodeSize = "(176, 75)";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node error
+    {
+	label = "";
+	position = (465 416);
+	states = ("Yes" "No");
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node software
+    {
+	label = "\320\236\321\210\320\270\320\261\320\272\320\260 \320\262 \320\237\320\236?";
+	position = (575 336);
+	states = ("Yes" "No");
+	HR_NodeSize = "(144, 29)";
+	HR_InputPanel = "true";
+	HR_LinkGroup = "[error:0]";
+	HR_LinkMode = "[error:0]";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node hardware
+    {
+	label = "\320\236\321\210\320\270\320\261\320\272\320\260 \320\262 \320\276\320\261\320\276\321\200\321\203\320\264\320\276\320\262\320\260\320\275\320\270\320\270?";
+	position = (365 331);
+	states = ("Yes" "No");
+	HR_NodeSize = "(182, 52)";
+	HR_LinkGroup = "[error:0]";
+	HR_LinkMode = "[error:0]";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node formatting_error
+    {
+	label = "\320\244\320\276\321\200\320\274\320\260\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265 \320\261\321\213\320\273\320\276 \n\320\277\321\200\320\276\320\262\320\265\320\264\320\265\320\275\320\276 \320\275\320\265\320\272\320\276\321\200\321\200\320\265\320\272\321\202\320\275\320\276?";
+	position = (733 100);
+	states = ("Yes" "No");
+	HR_LinkControlPoints = "";
+	HR_LinkGroup = "[not_formatted:0]";
+	HR_LinkMode = "[not_formatted:0]";
+	HR_NodeSize = "(174, 74)";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node Damaged
+    {
+	label = "\320\224\320\270\321\201\320\272\320\265\321\202\320\260 \320\277\320\276\320\262\321\200\320\265\320\266\320\264\320\265\320\275\320\260? ";
+	position = (229 204);
+	states = ("Yes" "No");
+	HR_NodeSize = "(150, 49)";
+	HR_LinkGroup = "[hardware:0]";
+	HR_LinkMode = "[hardware:0]";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node Extracted
+    {
+	label = "\320\224\320\270\321\201\320\272\320\265\321\202\320\260 \320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202 \n\320\262 \320\277\321\200\320\270\320\262\320\276\320\264\320\265? ";
+	position = (170 289);
+	states = ("Yes" "No");
+	HR_NodeSize = "(152, 62)";
+	HR_LinkGroup = "[hardware:0]";
+	HR_LinkMode = "[hardware:0]";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node Not_formatted
+    {
+	label = "\320\244\320\276\321\200\320\274\320\260\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265 \n\320\267\320\260\320\272\320\276\320\275\321\207\320\270\320\273\320\276\321\201\321\214 \320\275\320\265\321\203\320\264\320\260\321\207\320\265\320\271?";
+	position = (526 105);
+	states = ("Yes" "No");
+	HR_LinkControlPoints = "";
+	HR_LinkGroup = "[not_formatted:0]";
+	HR_LinkMode = "[not_formatted:0]";
+	HR_NodeSize = "(154, 86)";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    node Driver
+    {
+	label = "\320\235\320\265 \320\275\320\260\320\271\320\264\320\265\320\275 \320\277\320\276\320\264\321\205\320\276\320\264\321\217\321\211\320\270\320\271\n\320\264\321\200\320\260\320\271\320\262\320\265\321\200?";
+	position = (796 291);
+	states = ("Yes" "No");
+	HR_NodeSize = "(190, 79)";
+	HR_LinkGroup = "[software:0]";
+	HR_LinkMode = "[software:0]";
+	HR_Group = "0";
+	HR_Desc = "";
+	HR_State_1 = "";
+	HR_State_0 = "";
+    }
+
+    potential (not_formatted | formatting_error Not_formatted)
+    {
+	data = ((( 85 15 )	%  formatting_error=Yes  Not_formatted=Yes
+		 ( 90 10 ))	%  formatting_error=Yes  Not_formatted=No
+		(( 90 10 )	%  formatting_error=No  Not_formatted=Yes
+		 ( 0 100 )));	%  formatting_error=No  Not_formatted=No
+    }
+
+    potential (reading_device_error)
+    {
+	data = ( 4 96 );
+    }
+
+    potential (error | software hardware)
+    {
+	data = ((( 100 0 )	%  software=Yes  hardware=Yes
+		 ( 85 15 ))	%  software=Yes  hardware=No
+		(( 90 10 )	%  software=No  hardware=Yes
+		 ( 0 100 )));	%  software=No  hardware=No
+    }
+
+    potential (software | not_formatted Driver)
+    {
+	data = ((( 95 5 )	%  not_formatted=Yes  Driver=Yes
+		 ( 93 7 ))	%  not_formatted=Yes  Driver=No
+		(( 90 10 )	%  not_formatted=No  Driver=Yes
+		 ( 3 97 )));	%  not_formatted=No  Driver=No
+    }
+
+    potential (hardware | Extracted Damaged reading_device_error)
+    {
+	data = (((( 98 2 )	%  Extracted=Yes  Damaged=Yes  reading_device_error=Yes
+		  ( 95 5 ))	%  Extracted=Yes  Damaged=Yes  reading_device_error=No
+		 (( 90 10 )	%  Extracted=Yes  Damaged=No  reading_device_error=Yes
+		  ( 88 12 )))	%  Extracted=Yes  Damaged=No  reading_device_error=No
+		((( 85 15 )	%  Extracted=No  Damaged=Yes  reading_device_error=Yes
+		  ( 82 18 ))	%  Extracted=No  Damaged=Yes  reading_device_error=No
+		 (( 70 30 )	%  Extracted=No  Damaged=No  reading_device_error=Yes
+		  ( 5 95 ))));	%  Extracted=No  Damaged=No  reading_device_error=No
+    }
+
+    potential (formatting_error)
+    {
+	data = ( 5 95 );
+    }
+
+    potential (Damaged)
+    {
+	data = ( 10 90 );
+    }
+
+    potential (Extracted)
+    {
+	data = ( 20 80 );
+    }
+
+    potential (Not_formatted)
+    {
+	data = ( 10 90 );
+    }
+
+    potential (Driver)
+    {
+	data = ( 5 95 );
+    }
+} % class lab4

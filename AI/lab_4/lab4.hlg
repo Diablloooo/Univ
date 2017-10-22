@@ -1,0 +1,414 @@
+Sun Oct 15 01:59:02 2017
+
+
+Moral links:
+
+    Marrying hardware and software
+    Marrying Damaged and reading_device_error
+    Marrying Extracted and Damaged
+    Marrying Extracted and reading_device_error
+    Marrying Not_formatted and formatting_error
+    Marrying Driver and not_formatted
+
+
+Triangulating prime component with 4 members:
+    reading_device_error, hardware, Damaged, Extracted
+This component is a clique of cost 16
+
+Triangulating prime component with 3 members:
+    error, software, hardware
+This component is a clique of cost 8
+
+Triangulating prime component with 3 members:
+    not_formatted, formatting_error, Not_formatted
+This component is a clique of cost 8
+
+Triangulating prime component with 3 members:
+    not_formatted, software, Driver
+This component is a clique of cost 8
+
+
+Total cost of triangulation for all prime components is 40
+
+
+Elimination sequence:
+
+    Extracted
+    Damaged
+    reading_device_error
+    Not_formatted
+    formatting_error
+    error
+    hardware
+    Driver
+    software
+    not_formatted
+
+
+Cliques:
+
+Clique 4, 3 members, table size = 8:
+    not_formatted, software, Driver
+
+Clique 3, 3 members, table size = 8:
+    software, hardware, error
+
+Clique 2, 4 members, table size = 16:
+    hardware, reading_device_error, Damaged, Extracted
+
+Clique 1, 3 members, table size = 8:
+    not_formatted, formatting_error, Not_formatted
+
+Total clique table size: 40
+
+
+The junction forest:
+
+Creating junction tree with clique 4 as root ...
+
+Cliques 3 and 4 linked, separator has 1 member and table size = 2:
+    software
+
+Cliques 2 and 3 linked, separator has 1 member and table size = 2:
+    hardware
+
+Cliques 1 and 4 linked, separator has 1 member and table size = 2:
+    not_formatted
+
+
+Assignment of potentials to cliques:
+
+    Node not_formatted assigned to clique 1
+    Node reading_device_error assigned to clique 2
+    Node error assigned to clique 3
+    Node software assigned to clique 4
+    Node hardware assigned to clique 2
+    Node formatting_error assigned to clique 1
+    Node Damaged assigned to clique 2
+    Node Extracted assigned to clique 2
+    Node Not_formatted assigned to clique 1
+    Node Driver assigned to clique 4
+
+
+Checking conditional probability potentials:
+
+    No errors found
+
+
+Beliefs for chance nodes:
+
+    not_formatted:
+	Yes        0.13025
+	No         0.86975
+
+    reading_device_error:
+	Yes        0.04
+	No         0.96
+
+    error:
+	Yes        0.384209
+	No         0.615791
+
+    software:
+	Yes        0.185189
+	No         0.814811
+
+    hardware:
+	Yes        0.297984
+	No         0.702016
+
+    formatting_error:
+	Yes        0.05
+	No         0.95
+
+    Damaged:
+	Yes        0.1
+	No         0.9
+
+    Extracted:
+	Yes        0.2
+	No         0.8
+
+    Not_formatted:
+	Yes        0.1
+	No         0.9
+
+    Driver:
+	Yes        0.05
+	No         0.95
+Sun Oct 15 01:59:46 2017
+
+
+Moral links:
+
+    Marrying hardware and software
+    Marrying Damaged and reading_device_error
+    Marrying Extracted and Damaged
+    Marrying Extracted and reading_device_error
+    Marrying Not_formatted and formatting_error
+    Marrying Driver and not_formatted
+
+
+Triangulating prime component with 4 members:
+    reading_device_error, hardware, Damaged, Extracted
+This component is a clique of cost 16
+
+Triangulating prime component with 3 members:
+    error, software, hardware
+This component is a clique of cost 8
+
+Triangulating prime component with 3 members:
+    not_formatted, formatting_error, Not_formatted
+This component is a clique of cost 8
+
+Triangulating prime component with 3 members:
+    not_formatted, software, Driver
+This component is a clique of cost 8
+
+
+Total cost of triangulation for all prime components is 40
+
+
+Elimination sequence:
+
+    Extracted
+    Damaged
+    reading_device_error
+    Not_formatted
+    formatting_error
+    error
+    hardware
+    Driver
+    software
+    not_formatted
+
+
+Cliques:
+
+Clique 4, 3 members, table size = 8:
+    not_formatted, software, Driver
+
+Clique 3, 3 members, table size = 8:
+    software, hardware, error
+
+Clique 2, 4 members, table size = 16:
+    hardware, reading_device_error, Damaged, Extracted
+
+Clique 1, 3 members, table size = 8:
+    not_formatted, formatting_error, Not_formatted
+
+Total clique table size: 40
+
+
+The junction forest:
+
+Creating junction tree with clique 4 as root ...
+
+Cliques 3 and 4 linked, separator has 1 member and table size = 2:
+    software
+
+Cliques 2 and 3 linked, separator has 1 member and table size = 2:
+    hardware
+
+Cliques 1 and 4 linked, separator has 1 member and table size = 2:
+    not_formatted
+
+
+Assignment of potentials to cliques:
+
+    Node not_formatted assigned to clique 1
+    Node reading_device_error assigned to clique 2
+    Node error assigned to clique 3
+    Node software assigned to clique 4
+    Node hardware assigned to clique 2
+    Node formatting_error assigned to clique 1
+    Node Damaged assigned to clique 2
+    Node Extracted assigned to clique 2
+    Node Not_formatted assigned to clique 1
+    Node Driver assigned to clique 4
+
+
+Checking conditional probability potentials:
+
+    No errors found
+
+
+Beliefs for chance nodes:
+
+    not_formatted:
+	Yes        0.13025
+	No         0.86975
+
+    reading_device_error:
+	Yes        0.04
+	No         0.96
+
+    error:
+	Yes        0.384209
+	No         0.615791
+
+    software:
+	Yes        0.185189
+	No         0.814811
+
+    hardware:
+	Yes        0.297984
+	No         0.702016
+
+    formatting_error:
+	Yes        0.05
+	No         0.95
+
+    Damaged:
+	Yes        0.1
+	No         0.9
+
+    Extracted:
+	Yes        0.2
+	No         0.8
+
+    Not_formatted:
+	Yes        0.1
+	No         0.9
+
+    Driver:
+	Yes        0.05
+	No         0.95
+Sun Oct 15 01:59:49 2017
+
+
+Moral links:
+
+    Marrying hardware and software
+    Marrying Damaged and reading_device_error
+    Marrying Extracted and Damaged
+    Marrying Extracted and reading_device_error
+    Marrying Not_formatted and formatting_error
+    Marrying Driver and not_formatted
+
+
+Triangulating prime component with 4 members:
+    reading_device_error, hardware, Damaged, Extracted
+This component is a clique of cost 16
+
+Triangulating prime component with 3 members:
+    error, software, hardware
+This component is a clique of cost 8
+
+Triangulating prime component with 3 members:
+    not_formatted, formatting_error, Not_formatted
+This component is a clique of cost 8
+
+Triangulating prime component with 3 members:
+    not_formatted, software, Driver
+This component is a clique of cost 8
+
+
+Total cost of triangulation for all prime components is 40
+
+
+Elimination sequence:
+
+    Extracted
+    Damaged
+    reading_device_error
+    Not_formatted
+    formatting_error
+    error
+    hardware
+    Driver
+    software
+    not_formatted
+
+
+Cliques:
+
+Clique 4, 3 members, table size = 8:
+    not_formatted, software, Driver
+
+Clique 3, 3 members, table size = 8:
+    software, hardware, error
+
+Clique 2, 4 members, table size = 16:
+    hardware, reading_device_error, Damaged, Extracted
+
+Clique 1, 3 members, table size = 8:
+    not_formatted, formatting_error, Not_formatted
+
+Total clique table size: 40
+
+
+The junction forest:
+
+Creating junction tree with clique 4 as root ...
+
+Cliques 3 and 4 linked, separator has 1 member and table size = 2:
+    software
+
+Cliques 2 and 3 linked, separator has 1 member and table size = 2:
+    hardware
+
+Cliques 1 and 4 linked, separator has 1 member and table size = 2:
+    not_formatted
+
+
+Assignment of potentials to cliques:
+
+    Node not_formatted assigned to clique 1
+    Node reading_device_error assigned to clique 2
+    Node error assigned to clique 3
+    Node software assigned to clique 4
+    Node hardware assigned to clique 2
+    Node formatting_error assigned to clique 1
+    Node Damaged assigned to clique 2
+    Node Extracted assigned to clique 2
+    Node Not_formatted assigned to clique 1
+    Node Driver assigned to clique 4
+
+
+Checking conditional probability potentials:
+
+    No errors found
+
+
+Beliefs for chance nodes:
+
+    not_formatted:
+	Yes        0.13025
+	No         0.86975
+
+    reading_device_error:
+	Yes        0.04
+	No         0.96
+
+    error:
+	Yes        0.384209
+	No         0.615791
+
+    software:
+	Yes        0.185189
+	No         0.814811
+
+    hardware:
+	Yes        0.297984
+	No         0.702016
+
+    formatting_error:
+	Yes        0.05
+	No         0.95
+
+    Damaged:
+	Yes        0.1
+	No         0.9
+
+    Extracted:
+	Yes        0.2
+	No         0.8
+
+    Not_formatted:
+	Yes        0.1
+	No         0.9
+
+    Driver:
+	Yes        0.05
+	No         0.95
